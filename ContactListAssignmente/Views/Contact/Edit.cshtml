@@ -1,0 +1,34 @@
+﻿@using ContactListAssignmente.Utils;
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+
+<div class="container">
+    <h1>Edit Contact</h1>
+
+    @using (Html.BeginForm("Edit", "Contact", FormMethod.Post))
+    {
+        Contact contact = ContactsHandler.GetInstance().Find(ViewBag.ContactId);
+
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" name="firstName" value="@contact.FirstName"/>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" name="lastName" value="@contact.LastName">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" id="phone" placeholder="Enter Phone Number" name="phone" value="@contact.Phone">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email" value="@contact.Email">
+        </div>
+        <input type="hidden" value="@contact.Id"/>
+        <button type="submit" class="btn btn-primary">SAVE</button>
+    }
+
+</div>

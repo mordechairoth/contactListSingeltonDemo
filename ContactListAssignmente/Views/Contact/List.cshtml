@@ -1,0 +1,28 @@
+﻿@using ContactListAssignmente.Utils;
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<div class="container">
+    <a class="float-right btn btn-primary" href="@Url.Action("Add", "Contact")">ADD CONTACT</a>
+    <h1>Contacts</h1>
+    @{
+
+
+
+        foreach (var contact in ContactsHandler.GetInstance().All())
+        {
+            <div class="card" style="width: 18rem; margin-top:2px; display: inline-block">
+                    <div class="card-body">
+                        <h5 class="card-title">@contact.FirstName</h5>
+                        <p class="card-text">Name: @contact.FirstName @contact.LastName</p>
+                        <p class="card-text">Phone: @contact.Phone</p>
+                        <p class="card-text">Email: @contact.Email</p>
+                        <a href="@Url.Action("Edit", "Contact")/@contact.Id" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", "Contact")/@contact.Id" class="btn btn-danger">Delete</a>
+                    </div>
+            </div>
+        }
+    }
+</div>
+
